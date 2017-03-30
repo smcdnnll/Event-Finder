@@ -1,0 +1,25 @@
+<h1>Events</h1>
+<h3><a class="createAnEvent" href="/events/create-event">Create a New Event</a></h3>
+ {{#each events}}
+ <p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{this.title}}</h3>
+  </div>
+  <div class="panel-body">
+
+    <p>Description: {{this.description}}</p>
+    <p>Location: {{this.location}}</p>
+    <p>Cost: {{this.cost}}</p>
+    <img src="{{this.image_url}}" alt="image" width="150"></br></br>
+    <p><a class = "btn btn-default"  href="/events/edit-event/{{this._id}}">Edit</a>
+    <a class= "btn btn-default" href="/events/delete-event/{{this._id}}">Delete</a></p>
+
+  </div>
+</div>
+
+ 
+ </p>
+ {{/each}}
+
+    

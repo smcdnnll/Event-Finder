@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Brad Traversy",
+  "author": "Sinéad McDonnell",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "*",

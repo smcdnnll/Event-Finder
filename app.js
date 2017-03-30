@@ -11,11 +11,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/loginapp');
-var db = mongoose.connection;
+var db = mongoose.connect('mongodb://localhost/loginapp');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var events = require('./routes/events');
 
 // Init App
 var app = express();
@@ -43,6 +44,12 @@ app.use(session({
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req, res, next){
+  req.db =db;
+  next();
+})
+
 
 // Express Validator
 app.use(expressValidator({
@@ -78,10 +85,28 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/events', events);
+
+
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
+});
+
+
+
+//custom 404 page
+app.use(function (req, res, next) {
+    res.status(404);
+    res.render('404');
+});
+
+// custom 500 page
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500);
+    res.render('500');
 });

@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var db = mongoose.createConnection('mongodb://localhost/loginapp');
 
 var User = require('../models/user');
 

@@ -1,0 +1,35 @@
+<h2 class="page-header">Edit Event</h2>
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form method="post" action="/events/edit-event/{{event._id}}">
+   <div class="form-group">
+    <label>Event Title</label>
+    <input type="text" value="{{event.title}}" class="form-control" placeholder="Title" name="title">
+  </div>
+    <div class="form-group">
+    <!--<label>Description</label>-->
+    <!--<input type="text" value="{{event.description}}" class="form-control" placeholder="description" name="description" style="height:100px;">
+  </div>-->
+
+  <textarea name="description" rows="7" cols="90">
+    {{event.description}}
+</textarea>
+   <div class="form-group">
+    <label>Location</label>
+    <input type="text" class="form-control" value="{{event.location}}" placeholder="Location" name="location">
+  </div>
+  <div class="form-group">
+    <label>Cost</label>
+    <input type="text" class="form-control" value="{{event.cost}}" placeholder="Cost" name="cost">
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" class="form-control" value="{{event.image_url}}" placeholder="Image" name="image_url">
+  </div>
+  <div class="form-group">
+    
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

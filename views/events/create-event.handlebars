@@ -1,0 +1,31 @@
+<h2 class="page-header">Create a New Event</h2>
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form method="post" action="/events/api/events">
+   <div class="form-group">
+    <label>Event Title</label>
+    <input type="text" class="form-control" placeholder="Title" name="title">
+  </div>
+ <div class="form-group">
+    <label for="Textarea">Description</label>
+    <textarea class="form-control" id="Textarea" rows="3" name="description"></textarea>
+  </div>
+   <div class="form-group">
+    <label>Location</label>
+    <input type="text" class="form-control" placeholder="Location" name="location">
+  </div>
+  <div class="form-group">
+    <label>Cost</label>
+    <input type="text" class="form-control" placeholder="Cost" name="cost">
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" class="form-control" placeholder="Image" name="image_url">
+  </div>
+  <div class="form-group">
+    
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
